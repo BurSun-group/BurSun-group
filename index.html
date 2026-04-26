@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BurSun | Burning Sun</title>
@@ -17,7 +16,7 @@
             z-index: 1;
         }
         
-        /* Красноватое свечение вместо картинки (работает 100%)         мне интересно додумаешься ли ты полазать в коде, если да то привет)  можешь это стиреть, я просто проверяю коментарии и сохранения*/
+        /* Красноватое свечение */
         body::before {
             content: "";
             position: fixed;
@@ -38,9 +37,51 @@
             z-index: 2;
         }
         
+        /* Блок поиска — УМЕНЬШЕННЫЕ ОТСТУПЫ */
+        .search-container {
+            text-align: center;
+            margin: 0 0 5px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #b22222;
+        }
+        
+        #searchInput {
+            padding: 8px 18px;
+            width: 260px;
+            border-radius: 40px;
+            border: 1px solid #b22222;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 0.95em;
+            outline: none;
+            transition: 0.3s;
+        }
+        
+        #searchInput:focus {
+            border-color: #ff4444;
+            box-shadow: 0 0 8px red;
+        }
+        
+        #searchClear {
+            padding: 8px 18px;
+            border-radius: 40px;
+            background: #b22222;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        #searchClear:hover {
+            background: #ff4444;
+        }
+        
+        /* Шапка — УМЕНЬШЕННЫЙ ВЕРХНИЙ ОТСТУП */
         header { 
             text-align: center; 
-            padding: 30px 0 20px; 
+            padding: 15px 0 20px;
             border-bottom: 3px solid #b22222; 
         }
         
@@ -145,10 +186,25 @@
         a { 
             color: #b22222; 
         }
+
+        mark {
+            background: #ffcc00;
+            color: #000000;
+            padding: 0 2px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 <div class="wrapper">
+    
+    <!-- ПОИСК ВВЕРХУ -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="🔍 Поиск по сайту...">
+        <button id="searchClear">✖</button>
+    </div>
+    
     <header>
         <h1>BurSun</h1>
         <div class="sub">Burning Sun (Горящее солнце)</div>
@@ -168,35 +224,75 @@
     </div>
     
     <main id="content">
-        <!-- Контент будет загружаться сюда -->
+        <!-- Контент подгружается сюда -->
     </main>
     
     <footer>
-       |BurSun — горящее солнце тяжёлого металла 🤘 | 
+       |<i> BurSun — горящее солнце тяжёлого металла 🤘 </i>|
     </footer>
 </div>
 
 <script>
+    let currentPage = 'home';
+
+    function clearHighlights() {
+        const content = document.getElementById('content');
+        if (!content) return;
+        const marks = content.querySelectorAll('mark');
+        marks.forEach(mark => {
+            const parent = mark.parentNode;
+            const text = document.createTextNode(mark.textContent);
+            parent.replaceChild(text, mark);
+            parent.normalize();
+        });
+    }
+
+    function highlightText(searchTerm) {
+        if (!searchTerm.trim()) return;
+        const content = document.getElementById('content');
+        const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
+            acceptNode: function(node) {
+                if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        });
+        const textNodes = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+        
+        const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        textNodes.forEach(node => {
+            const original = node.nodeValue;
+            if (regex.test(original)) {
+                const span = document.createElement('span');
+                span.innerHTML = original.replace(regex, `<mark>$1</mark>`);
+                node.parentNode.replaceChild(span, node);
+            }
+        });
+    }
+
     function showPage(page) {
+        currentPage = page;
         const contentDiv = document.getElementById('content');
         if (page === 'home') {
             contentDiv.innerHTML = `
                 <h2 style="color:#b22222;">⚡ Добро пожаловать в Burning Sun ⚡</h2>
                 <p>Всем привет, солдаты! На связи — <strong>☀️ BurSun ☀️</strong>.</p>
                 <p><strong>BurSun</strong> — это энергия горящего солнца, переплавленная в тяжёлые риффы и агрессивный драйв. Мы играем современный метал 🤘.</p>
-                <p>🔥 Новый сингл: <strong>скоро</strong></p>
-                <p>🎤 Ближайший концерт: <strong>скоро</strong></p>
-                <p>Следи за новостями в наших соцсетях — ссылки вверху страницы.</p>
+                <p>🔥 Новый сингл: <strong><i>скоро</i></strong></p>
+                <p>🎤 Ближайший концерт: <strong><i>скоро</i></strong></p>
+                <p><i>Следи за новостями в наших соцсетях — ссылки вверху страницы.</i></p>
             `;
         } else if (page === 'band') {
             contentDiv.innerHTML = `
                 <h2 style="color:#b22222;">🔥 Участники группы 🔥</h2>
                 <ul>
-                    <li class="member"><strong>Стёпа Федоренко</strong> — Гитара🎸 <a href="https://vk.ru/anyagio" target="_blank">-*клик*-Металлический Диско-шар, главный по риффам.-*клик*-</a></li>
-                    <li class="member"><strong>Роман Яценко</strong> — Ударные🥁 <a href="https://vk.ru/id949084635" target="_blank">-*клик*-Идейный вдохновитель, заведующий ритмом.-*клик*-</a></li>
-                    <li class="member"><strong>Илья Савчук</strong> — Гитара🎸 <a href="https://vk.ru/lord_7567" target="_blank">-*клик*-Гитарист, главнй продажник.-*клик*-</a></li>
-                    <li class="member"><strong>Захар Табунщиков</strong> — Вокал🎤 <a href="https://vk.ru/outssiderrr" target="_blank">-*клик*-Главный Горлопан, ультракрикун.-*клик*-</a></li>
-                    <li class="member"><strong>Игорь Кудрявцев</strong> — Бас🎸 <a href="https://vk.ru/kudr9vcev_irrr" target="_blank">-*клик*-Сигма-мен, Повелитель низких частот.-*клик*-</a></li>
+                    <li class="member"><strong>Стёпа Федоренко</strong> — Гитара🎸 <a href="https://vk.ru/anyagio" target="_blank"><i>-*клик*-</i>Металлический Диско-шар, главный по риффам.<i>-*клик*-</i></a></li>
+                    <li class="member"><strong>Роман Яценко</strong> — Ударные🥁 <a href="https://vk.ru/id949084635" target="_blank"><i>-*клик*-</i>Идейный вдохновитель, заведующий ритмом.<i>-*клик*-</i></a></li>
+                    <li class="member"><strong>Илья Савчук</strong> — Гитара🎸 <a href="https://vk.ru/lord_7567" target="_blank"><i>-*клик*-</i>Гитарист, главнй продажник.<i>-*клик*-</i></a></li>
+                    <li class="member"><strong>Захар Табунщиков</strong> — Вокал🎤 <a href="https://vk.ru/outssiderrr" target="_blank"><i>-*клик*-</i>Главный Горлопан, ультракрикун.<i>-*клик*-</i></a></li>
+                    <li class="member"><strong>Игорь Кудрявцев</strong> — Бас🎸 <a href="https://vk.ru/kudr9vcev_irrr" target="_blank"><i>-*клик*-</i>Сигма-мен, Повелитель низких частот.<i>-*клик*-</i></a></li>
                 </ul>
                 <p><em>«Каждый из нас — частица раскалённого светила»</em></p>
             `;
@@ -206,8 +302,9 @@
                 <ul class="albums">
                     <li><strong></strong></li>
                     <li><strong></strong></li>
+                    <li><strong></strong></li>
                 </ul>
-                <p>🎧 Слушать на цифровых площадках (скоро):<br>
+                <p>🎧 Слушать на цифровых площадках <i>(скоро)</i>:<br>
                 | <a href="#">VK Музыка</a> | <a href="#">Яндекс.Музыка</a> |
                 </p>
             `;
@@ -215,9 +312,10 @@
             contentDiv.innerHTML = `
                 <h2 style="color:#b22222;">🧷 Фирменные метал-безделушки 🧷</h2>
                 <ul>
-                    <li>👕 Футболка с логотипом — скоро</li>
-                    <li>🧢 Кепка BurSun — скоро</li>
-                    <li>💀 Патч на куртку — скоро</li>
+                    <li>👕 Футболка с логотипом — <i>скоро</i></li>
+                    <li>🧢 Кепка BurSun — <i>скоро</i></li>
+                    <li>💀 Патч на куртку — <i>скоро</i></li>
+                    <li>🎸 Медиаторы с символикой — <i>скоро</i></li>
                 </ul>
                 <p>Следите за анонсами в соцсетях! 🔥</p>
             `;
@@ -230,12 +328,34 @@
                     <li>📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a></li>
                     <li>🔗 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a></li>
                 </ul>
-                <p>Менеджмент: +0 (000) 000-00-00</p>
+                <p>Менеджмент: +7 (999) 123-45-67</p>
             `;
         }
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.value = '';
+        clearHighlights();
     }
 
-    // Показываем главную страницу при загрузке
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const term = e.target.value.trim();
+            clearHighlights();
+            if (term !== '') {
+                highlightText(term);
+            }
+        });
+    }
+
+    const clearBtn = document.getElementById('searchClear');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = '';
+            clearHighlights();
+        });
+    }
+
     showPage('home');
 </script>
 </body>
