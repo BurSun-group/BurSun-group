@@ -1,9 +1,11 @@
+ <!-- кароч , сорян за ошибки , пишу поздно ,  исправлять в падлу , такие серые херни ты потом потрешь , ибо это либо коменты для твоей ориентации , либо мои заметки -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BurSun | Burning Sun</title>
+     <!-- тут свепрху 2 строчки это картинка во вкладке , в верхних лого , в нижних солнышкро -->
     <!-- favicon (иконка во вкладке лого) -->
     <!--<link rel="icon" type="image/jpeg" href="favicon.jpg"> -->
     <!-- favicon (иконка во вкладке солнце) -->
@@ -208,12 +210,12 @@
         <input type="text" id="searchInput" placeholder="🔍 Поиск по сайту...">
         <button id="searchClear">✖</button>
     </div>
-    
+    <!-- нижняя и верзняя напдписи -->
     <header>
         <h1>BurSun</h1>
         <div class="sub">Burning Sun (Горящее солнце)</div>
     </header>
-    
+  <!-- вкладки -->
     <nav>
         <a href="#" onclick="showPage('home')">Главная</a>
         <a href="#" onclick="showPage('band')">Участники</a>
@@ -221,21 +223,22 @@
         <a href="#" onclick="showPage('merch')">Мерч</a>
         <a href="#" onclick="showPage('contacts')">Контакты</a>
     </nav>
-    
+    <!-- контакты не зависящие от страницы -->
     <div class="social-links">
         🎸 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a>   |  
         📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a>
     </div>
     
     <main id="content">
-        <!-- Контент подгружается сюда -->
+        <!-- Контент подгружается сюда (в основном) -->
     </main>
-    
+    <!-- нижняя статичнакя надпись -->
     <footer>
        |<i> BurSun — горящее солнце тяжёлого металла 🤘 </i>|
     </footer>
 </div>
-
+<!-- от сюда пойдут сами вкладки -->
+    <!-- главная -->
 <script>
     let currentPage = 'home';
 
@@ -287,6 +290,7 @@
                 <p>🔥 Новый сингл: <strong><i>скоро</i></strong></p>
                 <p>🎤 Ближайший концерт: <strong><i>скоро</i></strong></p>
                 <p><i>Следи за новостями в наших соцсетях — ссылки вверху страницы.</i></p>
+                
             `;
         } else if (page === 'band') {
             contentDiv.innerHTML = `
