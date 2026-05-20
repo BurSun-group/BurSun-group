@@ -1,370 +1,558 @@
- <!-- кароч , сорян за ошибки , пишу поздно ,  исправлять в падлу , такие серые херни ты потом потрешь , ибо это либо коменты для твоей ориентации , либо мои заметки -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BurSun | Burning Sun</title>
-     <!-- тут свепрху 2 строчки это картинка во вкладке , в верхних лого , в нижних солнышкро -->
-    <!-- favicon (иконка во вкладке лого) -->
-    <!--<link rel="icon" type="image/jpeg" href="favicon.jpg"> -->
-    <!-- favicon (иконка во вкладке солнце) -->
-    <link rel="icon" type="image/jpeg" href="sun.webp"> 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            background: #000000; 
-            color: #f0f0f0; 
-            font-family: 'Segoe UI', 'Courier New', monospace; 
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Красноватое свечение */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(180, 34, 34, 0.25), rgba(0,0,0,0) 70%);
-            pointer-events: none; 
-            z-index: 0;
-        }
-        
-        .wrapper { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Блок поиска — УМЕНЬШЕННЫЕ ОТСТУПЫ */
-        .search-container {
-            text-align: center;
-            margin: 0 0 5px 0;
-            padding: 10px 0;
-            border-bottom: 1px solid #b22222;
-        }
-        
-        #searchInput {
-            padding: 8px 18px;
-            width: 260px;
-            border-radius: 40px;
-            border: 1px solid #b22222;
-            background: #1a1a1a;
-            color: #fff;
-            font-size: 0.95em;
-            outline: none;
-            transition: 0.3s;
-        }
-        
-        #searchInput:focus {
-            border-color: #ff4444;
-            box-shadow: 0 0 8px red;
-        }
-        
-        #searchClear {
-            padding: 8px 18px;
-            border-radius: 40px;
-            background: #b22222;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        
-        #searchClear:hover {
-            background: #ff4444;
-        }
-        
-        /* Шапка — УМЕНЬШЕННЫЙ ВЕРХНИЙ ОТСТУП */
-        header { 
-            text-align: center; 
-            padding: 15px 0 20px;
-            border-bottom: 3px solid #b22222; 
-        }
-        
-        h1 { 
-            font-size: 3.5em; 
-            letter-spacing: 4px; 
-            color: #b22222; 
-            text-shadow: 3px 3px 0 #ffffff30; 
-        }
-        
-        .sub { 
-            font-size: 1.2em; 
-            color: #cccccc; 
-            margin-top: 5px; 
-        }
-        
-        nav { 
-            margin: 25px 0; 
-            text-align: center; 
-        }
-        
-        nav a { 
-            color: #ffffff; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin: 0 15px; 
-            padding: 6px 12px; 
-            border: 1px solid #b22222; 
-            border-radius: 30px; 
-            transition: 0.3s; 
-            display: inline-block; 
-            background: transparent;
-        }
-        
-        nav a:hover { 
-            background: #b22222; 
-            color: #000; 
-            border-color: #fff; 
-            box-shadow: 0 0 8px red; 
-        }
-        
-        .social-links { 
-            text-align: center; 
-            margin: 20px 0 10px; 
-        }
-        
-        .social-links a { 
-            color: #b22222; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin: 0 12px; 
-            font-size: 1.1em; 
-            border-bottom: 1px dashed #b22222; 
-        }
-        
-        .social-links a:hover { 
-            color: #fff; 
-            border-bottom-color: #fff; 
-        }
-        
-        main { 
-            background: #0a0a0a; 
-            padding: 25px; 
-            border-left: 2px solid #b22222; 
-            border-right: 2px solid #b22222; 
-            margin: 20px 0; 
-        }
-        
-        footer { 
-            text-align: center; 
-            font-size: 0.8em; 
-            color: #555; 
-            border-top: 1px solid #b22222; 
-            padding-top: 20px; 
-            margin-top: 20px; 
-        }
-        
-        .member { 
-            margin: 12px 0; 
-            border-left: 4px solid #b22222; 
-            padding-left: 15px; 
-        }
-        
-        .member strong { 
-            font-size: 1.2em; 
-        }
-        
-        ul { 
-            list-style: none; 
-            padding-left: 0; 
-        }
-        
-        ul.albums { 
-            list-style-type: square; 
-            padding-left: 25px; 
-        }
-        
-        .contacts-list li { 
-            margin-bottom: 10px; 
-        }
-        
-        a { 
-            color: #b22222; 
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BurSun | Burning Sun</title>
+  <!-- иконка во вкладке -->
+  <link rel="icon" type="image/jpeg" href="BS.webp.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        mark {
-            background: #ffcc00;
-            color: #000000;
-            padding: 0 2px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-    </style>
+    body {
+        background: #000000;
+        color: #f0f0f0;
+        font-family: 'Segoe UI', 'Courier New', monospace;
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+    }
+
+            body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(180, 34, 34, 0.25), rgba(0,0,0,0) 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+          .search-container {
+        text-align: center;
+        margin: 0 0 5px 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #b22222;
+        position: relative;
+    }
+
+    #searchInput {
+        padding: 8px 18px;
+        width: 260px;
+        border-radius: 40px;
+        border: 1px solid #b22222;
+        background: #1a1a1a;
+        color: #fff;
+        font-size: 0.95em;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    #searchInput:focus {
+        border-color: #ff4444;
+        box-shadow: 0 0 8px red;
+    }
+
+    #searchClear {
+        padding: 8px 18px;
+        border-radius: 40px;
+        background: #b22222;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-left: 10px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    #searchClear:hover {
+        background: #ff4444;
+    }
+
+    .search-results {
+        display: none;
+        margin-top: 8px;
+        background: #1a1a1a;
+        border: 1px solid #b22222;
+        padding: 10px;
+        border-radius: 8px;
+        max-height: 250px;
+        overflow-y: auto;
+        text-align: left;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 500px;
+        z-index: 10;
+    }
+
+    .search-result-page {
+        font-weight: bold;
+        color: #b22222;
+        margin-top: 10px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 2px;
+    }
+
+    .search-result-item {
+        padding: 5px 8px;
+        margin: 2px 0;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.2s;
+        word-break: break-word;
+    }
+
+    .search-result-item:hover {
+        background: #b22222;
+        color: #000;
+    }
+
+    .search-result-item mark {
+        background: #ffcc00;
+        color: #000;
+        padding: 0 2px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+            .logo-image {
+        display: block;
+        margin: 10px auto;
+        max-width: 150px;
+        width: 100%;
+        height: auto;
+        border: 2px solid #b22222;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(178, 34, 34, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .logo-image:hover {
+        transform: scale(1.03);
+    }
+
+            header {
+        text-align: center;
+        padding: 10px 0 15px;
+        border-bottom: 3px solid #b22222;
+    }
+
+    h1 {
+        font-size: 3.5em;
+        letter-spacing: 4px;
+        color: #b22222;
+        text-shadow: 3px 3px 0 #ffffff30;
+    }
+
+    .sub {
+        font-size: 1.2em;
+        color: #cccccc;
+        margin-top: 5px;
+    }
+
+    nav {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 15px;
+        padding: 6px 12px;
+        border: 1px solid #b22222;
+        border-radius: 30px;
+        transition: 0.3s;
+        display: inline-block;
+        background: transparent;
+    }
+
+    nav a:hover {
+        background: #b22222;
+        color: #000;
+        border-color: #fff;
+        box-shadow: 0 0 8px red;
+    }
+
+    .social-links {
+        text-align: center;
+        margin: 15px 0 10px;
+    }
+
+    .social-links a {
+        color: #b22222;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 12px;
+        font-size: 1.1em;
+        border-bottom: 1px dashed #b22222;
+    }
+
+    .social-links a:hover {
+        color: #fff;
+        border-bottom-color: #fff;
+    }
+
+    main {
+        background: #0a0a0a;
+        padding: 25px;
+        border-left: 2px solid #b22222;
+        border-right: 2px solid #b22222;
+        margin: 20px 0;
+    }
+
+    .member {
+        margin: 12px 0;
+        border-left: 4px solid #b22222;
+        padding-left: 15px;
+    }
+
+    .member strong {
+        font-size: 1.2em;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    ul.albums {
+        list-style-type: square;
+        padding-left: 25px;
+    }
+
+    .contacts-list li {
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: #b22222;
+    }
+
+    mark {
+        background: #ffcc00;
+        color: #000000;
+        padding: 0 2px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+   details {
+        margin: 15px 0;
+        border-left: 3px solid #b22222;
+        padding-left: 12px;
+    }
+
+    summary {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #b22222;
+        cursor: pointer;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    summary:hover {
+        color: #ff4444;
+    }
+
+    details ol {
+        margin-top: 8px;
+        padding-left: 25px;
+        color: #ddd;
+    }
+
+    details ol li {
+        margin: 4px 0;
+    }
+  </style>
 </head>
 <body>
 <div class="wrapper">
-    
-    <!-- ПОИСК ВВЕРХУ -->
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="🔍 Поиск по сайту...">
-        <button id="searchClear">✖</button>
-    </div>
-    <!-- нижняя и верзняя напдписи -->
-    <header>
-        <h1>BurSun</h1>
-        <div class="sub">Burning Sun (Горящее солнце)</div>
-    </header>
-  <!-- вкладки -->
-    <nav>
-        <a href="#" onclick="showPage('home')">Главная</a>
-        <a href="#" onclick="showPage('band')">Участники</a>
-        <a href="#" onclick="showPage('music')">Музыка</a>
-        <a href="#" onclick="showPage('merch')">Мерч</a>
-        <a href="#" onclick="showPage('contacts')">Контакты</a>
-    </nav>
-    <!-- контакты не зависящие от страницы -->
-    <div class="social-links">
-        🎸 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a>   |  
-        📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a>
-    </div>
-    
-    <main id="content">
-        <!-- Контент подгружается сюда (в основном) -->
-    </main>
-    <!-- нижняя статичнакя надпись -->
-    <footer>
-       |<i> BurSun — горящее солнце тяжёлого металла 🤘 </i>|
-    </footer>
+
+  <!-- ПОИСК -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder=" Поиск...">
+    <button id="searchClear">✖</button>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <!-- ЛОГОТИП -->
+  <img src="BS.jpg" alt="BurSun Logo" class="logo-image">
+
+  <header>
+    <h1>BurSun</h1>
+    <div class="sub">Burning Sun (Горящее солнце)</div>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showPage('home')">Главная</a>
+    <a href="#" onclick="showPage('band')">Участники</a>
+    <a href="#" onclick="showPage('music')">Музыка</a>
+    <a href="#" onclick="showPage('merch')">Мерч</a>
+    <a href="#" onclick="showPage('contacts')">Контакты</a>
+  </nav>
+
+  <div class="social-links">
+    VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a> &nbsp;|&nbsp;
+    Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a>
+  </div>
+
+  <main id="content">
+
+  </main>
+
 </div>
-<!-- от сюда пойдут сами вкладки -->
 
 <script>
-    let currentPage = 'home';
+  const pagesContent = {
+  home: `
+      <h2 style="color:#b22222;">Добро пожаловать в Burning Sun</h2>
+      <p>Всем привет, солдаты! На связи — <strong>BurSun</strong>.</p>
+      <p><strong>BurSun</strong> — это энергия горящего солнца, переплавленная в тяжёлые риффы и агрессивный драйв. Мы играем современный метал.</p>
+      <p>Новый сингл: <strong><i>скоро</i></strong></p>
+      <p>Ближайший концерт: <strong><i>скоро</i></strong></p>
+      <p><i>Следи за новостями в наших соцсетях — ссылки вверху страницы.</i></p>
+  `,
+  band: `
+      <h2 style="color:#b22222;">Участники группы</h2>
+      <ul>
+          <li class="member"><strong>Стёпа Федоренко</strong> — Гитара <a href="https://vk.ru/anyagio" target="_blank"><i>-*клик*-</i>Металлический Диско-шар, главный по риффам.<i>-*клик*-</i></a></li>
+          <li class="member"><strong>Роман Яценко</strong> — Ударные <a href="https://vk.ru/id949084635" target="_blank"><i>-*клик*-</i>Идейный вдохновитель, заведующий ритмом.<i>-*клик*-</i></a></li>
+          <li class="member"><strong>Илья Савчук</strong> — Гитара <a href="https://vk.ru/lord_7567" target="_blank"><i>-*клик*-</i>Гитарист, главный продажник.<i>-*клик*-</i></a></li>
+          <li class="member"><strong>Игорь Кудрявцев</strong> — Бас <a href="https://vk.ru/kudr9vcev_irrr" target="_blank"><i>-*клик*-</i>Сигма-мен, Повелитель низких частот.<i>-*клик*-</i></a></li>
+      </ul>
+      <p><em>«Каждый из нас — частица раскалённого светила»</em></p>
+  `,
+  music: `
+      <h2 style="color:#b22222;">Дискография</h2>
+      <details>
+          <summary>Путь к одержимости</summary>
+          <ol>
+              <li>Только вперёд</li>
+              <li>Праведный гнев</li>
+              <li>Мирозакон</li>
+              <li>Небесный сад</li>
+              <li>Последний день</li>
+              <li>Снова холод</li>
+              <li>Черный король</li>
+              <li>Наперекор судьбе</li>
+              <li>Девятый вал</li>
+          </ol>
+      </details>
+      <p>Слушать на цифровых площадках <i>(скоро)</i>:<br>
+      | <a href="#">VK Музыка</a> | <a href="#">Яндекс.Музыка</a> |
+      </p>
+  `,
+  merch: `
+      <h2 style="color:#b22222;">Фирменные метал-безделушки</h2>
+      <ul>
+          <li>Футболка с логотипом — <i>скоро</i></li>
+          <li>Кепка BurSun — <i>скоро</i></li>
+          <li>Патч на куртку — <i>скоро</i></li>
+          <li>Медиаторы с символикой — <i>скоро</i></li>
+      </ul>
+      <p>Следите за анонсами в соцсетях!</p>
+  `,
+  contacts: `
+      <h2 style="color:#b22222;">Контакты</h2>
+      <p>По вопросам выступлений, интервью и сотрудничества:</p>
+      <ul class="contacts-list">
+          <li>Email: <a href="mailto:burnsun@metal.ru">bursun.group.of@gmail.com</a></li>
+          <li>Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a></li>
+          <li>VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a></li>
+      </ul>
+      <p>Менеджмент: +7 (999) 123-45-67</p>
+  `
+};
 
-    function clearHighlights() {
-        const content = document.getElementById('content');
-        if (!content) return;
-        const marks = content.querySelectorAll('mark');
-        marks.forEach(mark => {
-            const parent = mark.parentNode;
-            const text = document.createTextNode(mark.textContent);
-            parent.replaceChild(text, mark);
-            parent.normalize();
-        });
-    }
+let currentPage = 'home';
 
-    function highlightText(searchTerm) {
-        if (!searchTerm.trim()) return;
-        const content = document.getElementById('content');
-        const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
-            acceptNode: function(node) {
-                if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) {
-                    return NodeFilter.FILTER_REJECT;
-                }
-                return NodeFilter.FILTER_ACCEPT;
-            }
-        });
-        const textNodes = [];
-        while (walker.nextNode()) textNodes.push(walker.currentNode);
-        
-        const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-        textNodes.forEach(node => {
-            const original = node.nodeValue;
-            if (regex.test(original)) {
-                const span = document.createElement('span');
-                span.innerHTML = original.replace(regex, `<mark>$1</mark>`);
-                node.parentNode.replaceChild(span, node);
-            }
-        });
-    }
+function clearHighlights() {
+  const content = document.getElementById('content');
+  if (!content) return;
+  const marks = content.querySelectorAll('mark');
+  marks.forEach(mark => {
+      const parent = mark.parentNode;
+      const text = document.createTextNode(mark.textContent);
+      parent.replaceChild(text, mark);
+      parent.normalize();
+  });
+}
 
-    function showPage(page) {
-        currentPage = page;
-        const contentDiv = document.getElementById('content');
-        if (page === 'home') {
-            contentDiv.innerHTML = `
-                <h2 style="color:#b22222;">⚡ Добро пожаловать в Burning Sun ⚡</h2>
-                <p>Всем привет, солдаты! На связи — <strong>☀️ BurSun ☀️</strong>.</p>
-                <p><strong>BurSun</strong> — это энергия горящего солнца, переплавленная в тяжёлые риффы и агрессивный драйв. Мы играем современный метал 🤘.</p>
-                <p>🔥 Новый сингл: <strong><i>скоро</i></strong></p>
-                <p>🎤 Ближайший концерт: <strong><i>скоро</i></strong></p>
-                <p><i>Следи за новостями в наших соцсетях — ссылки вверху страницы.</i></p>
-                
-            `;
-        } else if (page === 'band') {
-            contentDiv.innerHTML = `
-                <h2 style="color:#b22222;">🔥 Участники группы 🔥</h2>
-                <ul>
-                    <li class="member"><strong>Стёпа Федоренко</strong> — Гитара🎸 <a href="https://vk.ru/anyagio" target="_blank"><i>-*клик*-</i>Металлический Диско-шар, главный по риффам.<i>-*клик*-</i></a></li>
-                    <li class="member"><strong>Роман Яценко</strong> — Ударные🥁 <a href="https://vk.ru/id949084635" target="_blank"><i>-*клик*-</i>Идейный вдохновитель, заведующий ритмом.<i>-*клик*-</i></a></li>
-                    <li class="member"><strong>Илья Савчук</strong> — Гитара🎸 <a href="https://vk.ru/lord_7567" target="_blank"><i>-*клик*-</i>Гитарист, главнй продажник.<i>-*клик*-</i></a></li>
-                    <li class="member"><strong>Игорь Кудрявцев</strong> — Бас🎸 <a href="https://vk.ru/kudr9vcev_irrr" target="_blank"><i>-*клик*-</i>Сигма-мен, Повелитель низких частот.<i>-*клик*-</i></a></li>
-                </ul>
-                <p><em>«Каждый из нас — частица раскалённого светила»</em></p>
-            `;
-        } else if (page === 'music') {
-            contentDiv.innerHTML = `
-                <h2 style="color:#b22222;">🎵 Дискография 🎵</h2>
-                <ul class="albums">
-                    <li><strong></strong></li>
-                    <li><strong></strong></li>
-                    <li><strong></strong></li>
-                </ul>
-                <p>🎧 Слушать на цифровых площадках <i>(скоро)</i>:<br>
-                | <a href="#">VK Музыка</a> | <a href="#">Яндекс.Музыка</a> |
-                </p>
-            `;
-        } else if (page === 'merch') {
-            contentDiv.innerHTML = `
-                <h2 style="color:#b22222;">🧷 Фирменные метал-безделушки 🧷</h2>
-                <ul>
-                    <li>👕 Футболка с логотипом — <i>скоро</i></li>
-                    <li>🧢 Кепка BurSun — <i>скоро</i></li>
-                    <li>💀 Патч на куртку — <i>скоро</i></li>
-                    <li>🎸 Медиаторы с символикой — <i>скоро</i></li>
-                </ul>
-                <p>Следите за анонсами в соцсетях! 🔥</p>
-            `;
-        } else if (page === 'contacts') {
-            contentDiv.innerHTML = `
-                <h2 style="color:#b22222;">📬 Контакты</h2>
-                <p>По вопросам выступлений, интервью и сотрудничества:</p>
-                <ul class="contacts-list">
-                    <li>📧 Email: <a href="mailto:burnsun@metal.ru"> bursun.group.of@gmail.com</a></li>
-                    <li>📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a></li>
-                    <li>🔗 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a></li>
-                </ul>
-                <p>Менеджмент: +7 (999) 123-45-67</p>
-            `;
-        }
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) searchInput.value = '';
-        clearHighlights();
-    }
+function highlightText(searchTerm) {
+  if (!searchTerm.trim()) return;
+  const content = document.getElementById('content');
+  const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
+      acceptNode: function(node) {
+          if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) {
+              return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+      }
+  });
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
 
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', function(e) {
-            const term = e.target.value.trim();
-            clearHighlights();
-            if (term !== '') {
-                highlightText(term);
-            }
-        });
-    }
+  const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  textNodes.forEach(node => {
+      const original = node.nodeValue;
+      if (regex.test(original)) {
+          const span = document.createElement('span');
+          span.innerHTML = original.replace(regex, `<mark>$1</mark>`);
+          node.parentNode.replaceChild(span, node);
+      }
+  });
+}
 
-    const clearBtn = document.getElementById('searchClear');
-    if (clearBtn) {
-        clearBtn.addEventListener('click', function() {
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) searchInput.value = '';
-            clearHighlights();
-        });
-    }
+function applySearchToCurrentPage() {
+  const term = document.getElementById('searchInput').value.trim();
+  clearHighlights();
+  if (term !== '') {
+      highlightText(term);
+  }
+}
 
-    showPage('home');
+function showPage(page) {
+  currentPage = page;
+  const contentDiv = document.getElementById('content');
+  contentDiv.innerHTML = pagesContent[page];
+  document.getElementById('searchResults').style.display = 'none';
+  applySearchToCurrentPage();
+
+  const term = document.getElementById('searchInput').value.trim();
+  if (term) {
+      setTimeout(() => {
+          const firstMark = document.querySelector('#content mark');
+          if (firstMark) {
+              firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+      }, 100);
+  }
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function searchAllPages(query) {
+  const results = {};
+  const lowerQuery = query.toLowerCase();
+  for (let page in pagesContent) {
+      const div = document.createElement('div');
+      div.innerHTML = pagesContent[page];
+      const text = div.textContent || div.innerText || '';
+      const lowerText = text.toLowerCase();
+      const snippets = [];
+      let idx = lowerText.indexOf(lowerQuery);
+      while (idx !== -1) {
+          const start = Math.max(0, idx - 30);
+          const end = Math.min(text.length, idx + query.length + 30);
+          const snippet = text.substring(start, end);
+          const regex = new RegExp(escapeRegExp(query), 'gi');
+          const highlightedSnippet = snippet.replace(regex, '<mark>$&</mark>');
+          snippets.push(highlightedSnippet);
+          idx = lowerText.indexOf(lowerQuery, idx + 1);
+      }
+      if (snippets.length > 0) {
+          results[page] = snippets;
+      }
+  }
+  return results;
+}
+
+function getPageName(pageKey) {
+  const names = {
+      home: 'Главная',
+      band: 'Участники',
+      music: 'Музыка',
+      merch: 'Мерч',
+      contacts: 'Контакты'
+  };
+  return names[pageKey] || pageKey;
+}
+
+function displaySearchResults(results) {
+  const container = document.getElementById('searchResults');
+  if (Object.keys(results).length === 0) {
+      container.style.display = 'none';
+      return;
+  }
+  let html = '';
+  for (let page in results) {
+      html += `<div class="search-result-page">${getPageName(page)}</div>`;
+      results[page].forEach(snippet => {
+          html += `<div class="search-result-item" data-page="${page}">${snippet}</div>`;
+      });
+  }
+  container.innerHTML = html;
+  container.style.display = 'block';
+
+  document.querySelectorAll('.search-result-item').forEach(item => {
+      item.addEventListener('click', function() {
+          const page = this.getAttribute('data-page');
+          showPage(page);
+      });
+  });
+}
+
+const searchInput = document.getElementById('searchInput');
+const searchResultsDiv = document.getElementById('searchResults');
+
+if (searchInput) {
+  searchInput.addEventListener('input', function(e) {
+      const term = e.target.value.trim();
+      clearHighlights();
+
+      if (term === '') {
+          searchResultsDiv.style.display = 'none';
+          return;
+      }
+
+      highlightText(term);
+      const allResults = searchAllPages(term);
+      displaySearchResults(allResults);
+  });
+
+  document.addEventListener('click', function(event) {
+      if (!searchInput.contains(event.target) && !searchResultsDiv.contains(event.target)) {
+          searchResultsDiv.style.display = 'none';
+      }
+  });
+
+  searchInput.addEventListener('focus', function() {
+      const term = searchInput.value.trim();
+      if (term !== '') {
+          const allResults = searchAllPages(term);
+          displaySearchResults(allResults);
+      }
+  });
+}
+
+const clearBtn = document.getElementById('searchClear');
+if (clearBtn) {
+  clearBtn.addEventListener('click', function() {
+      searchInput.value = '';
+      clearHighlights();
+      searchResultsDiv.style.display = 'none';
+      searchInput.focus();
+  });
+}
+
+showPage('home');
 </script>
 </body>
 </html>
-<!-- не ивжу смысла расписывать что где , ибо ты умни это раз , а два я хочу спать  и у меня завтра заечт и к мероприятим нужно готовиться , там впринцепе написаннн гед какие вкладки . Кароч , дальше сам , ес чё пищи . И не забудь это стиреть... -->
