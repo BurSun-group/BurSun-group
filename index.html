@@ -278,6 +278,17 @@
     details ol li {
         margin: 4px 0;
     }
+
+    /* ===== ВОТ ЭТОТ СТИЛЬ ДЛЯ ФУТЕРА ===== */
+    footer {
+        text-align: center;
+        color: #555;
+        font-size: 0.8em;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #b22222;
+    }
+    /* =================================== */
   </style>
 </head>
 <body>
@@ -303,42 +314,47 @@
     <a href="#" onclick="showPage('band')">Участники</a>
     <a href="#" onclick="showPage('music')">Музыка</a>
     <a href="#" onclick="showPage('merch')">Мерч</a>
+    <a href="#" onclick="showPage('support')">Поддержать</a>
     <a href="#" onclick="showPage('contacts')">Контакты</a>
   </nav>
 
   <div class="social-links">
-    VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a> &nbsp;|&nbsp;
-    Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a>
+    🎸 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a>   |  
+    📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a>
   </div>
 
   <main id="content">
 
   </main>
 
+   <footer>
+       |<i> BurSun — горящее солнце раскалённого металла 🤘 </i>|
+   </footer>
 </div>
 
 <script>
   const pagesContent = {
   home: `
-      <h2 style="color:#b22222;">Добро пожаловать в Burning Sun</h2>
-      <p>Всем привет, солдаты! На связи — <strong>BurSun</strong>.</p>
-      <p><strong>BurSun</strong> — это энергия горящего солнца, переплавленная в тяжёлые риффы и агрессивный драйв. Мы играем современный метал.</p>
-      <p>Новый сингл: <strong><i>скоро</i></strong></p>
-      <p>Ближайший концерт: <strong><i>скоро</i></strong></p>
-      <p><i>Следи за новостями в наших соцсетях — ссылки вверху страницы.</i></p>
+      <h2 style="color:#b22222;">⚡ Добро пожаловать в Burning Sun ⚡</h2>
+                <p>Всем привет, солдаты! На связи — <strong>☀️ BurSun ☀️</strong>.</p>
+                <p><strong>BurSun</strong> — это энергия горящего солнца, переплавленная в тяжёлые риффы и агрессивный драйв. Мы играем современный метал 🤘.</p>
+                <p>🔥 Новый сингл: <strong><i>скоро</i></strong></p>
+                <p>🎤 Ближайший концерт: <strong><i>скоро</i></strong></p>
+                <p><i>Следи за новостями в наших соцсетях — ссылки вверху страницы.</i></p>
   `,
   band: `
-      <h2 style="color:#b22222;">Участники группы</h2>
-      <ul>
-          <li class="member"><strong>Стёпа Федоренко</strong> — Гитара <a href="https://vk.ru/anyagio" target="_blank">Металлический Диско-шар, главный по риффам.</a></li>
-          <li class="member"><strong>Роман Яценко</strong> — Ударные <a href="https://vk.ru/id949084635" target="_blank">Идейный вдохновитель, заведующий ритмом.</a></li>
-          <li class="member"><strong>Илья Савчук</strong> — Гитара <a href="https://vk.ru/lord_7567" target="_blank">Гитарист, главный продажник.</a></li>
-          <li class="member"><strong>Игорь Кудрявцев</strong> — Бас <a href="https://vk.ru/kudr9vcev_irrr" target="_blank">Сигма-мен, Повелитель низких частот.</a></li>
-      </ul>
+      <h2 style="color:#b22222;">🔥 Участники группы 🔥</h2>
+       <ul>
+           <li class="member"><strong>Стёпа Федоренко</strong> — Гитара🎸 <a href="https://vk.ru/anyagio" target="_blank"><i>-*клик*-</i>Металлический Диско-шар, главный по риффам.<i>-*клик*-</i></a></li>
+           <li class="member"><strong>Роман Яценко</strong> — Ударные🥁 <a href="https://vk.ru/id949084635" target="_blank"><i>-*клик*-</i>Идейный вдохновитель, заведующий ритмом.<i>-*клик*-</i></a></li>
+           <li class="member"><strong>Илья Савчук</strong> — Гитара🎸 <a href="https://vk.ru/lord_7567" target="_blank"><i>-*клик*-</i>Гитарист, главнй продажник.<i>-*клик*-</i></a></li>
+           <li class="member"><strong>Захар Табунщиков</strong> — Вокал🎤 <a href="https://vk.ru/outssiderrr" target="_blank"><i>-*клик*-</i>Главный Горлопан, ультракрикун.<i>-*клик*-</i></a></li>
+           <li class="member"><strong>Игорь Кудрявцев</strong> — Бас🎸 <a href="https://vk.ru/kudr9vcev_irrr" target="_blank"><i>-*клик*-</i>Сигма-мен, Повелитель низких частот.<i>-*клик*-</i></a></li>
+       </ul>
       <p><em>«Каждый из нас — частица раскалённого светила»</em></p>
   `,
   music: `
-      <h2 style="color:#b22222;">Дискография</h2>
+      <h2 style="color:#b22222;">🎵 Дискография 🎵</h2>
       <details>
           <summary>Путь к одержимости</summary>
           <ol>
@@ -358,22 +374,31 @@
       </p>
   `,
   merch: `
-      <h2 style="color:#b22222;">Фирменные метал-безделушки</h2>
+      <h2 style="color:#b22222;">🧷 Фирменные метал-безделушки 🧷</h2>
       <ul>
-          <li>Футболка с логотипом — <i>скоро</i></li>
-          <li>Кепка BurSun — <i>скоро</i></li>
-          <li>Патч на куртку — <i>скоро</i></li>
-          <li>Медиаторы с символикой — <i>скоро</i></li>
+          <li>👕 Футболка с логотипом — <i>скоро</i></li>
+          <li>🧢 Кепка BurSun — <i>скоро</i></li>
+          <li>💀 Патч на куртку — <i>скоро</i></li>
+          <li>🎸 Медиаторы с символикой — <i>скоро</i></li>
       </ul>
-      <p>Следите за анонсами в соцсетях!</p>
+      <p>Следите за анонсами в соцсетях!🔥</p>
+  `,
+  support: `
+      <h2 style="color:#b22222;">💰 Поддержать группу</h2>
+      <p style="margin-bottom: 20px;">Если вам нравится наше творчество, вы можете помочь нам развиваться. Любая поддержка важна!</p>
+      <ul>
+        <li class="member"><strong>🚀 Boosty</strong> — <a href="https://boosty.to/bursun" target="_blank">boosty.to/bursun</a> <span style="color:#888; font-size:0.9em;">(эксклюзивный контент)</span></li>
+        <li class="member"><strong>💎 Patreon</strong> — <a href="https://www.patreon.com/bursun" target="_blank">patreon.com/bursun</a> <span style="color:#888; font-size:0.9em;">(долгосрочная поддержка)</span></li>
+      </ul>
+      <p style="margin-top: 30px; font-size:0.9em; color:#aaa;">Спасибо, что вы с нами! 🤘</p>
   `,
   contacts: `
       <h2 style="color:#b22222;">Контакты</h2>
       <p>По вопросам выступлений, интервью и сотрудничества:</p>
       <ul class="contacts-list">
-          <li>Email: <a href="mailto:burnsun@metal.ru">bursun.group.of@gmail.com</a></li>
-          <li>Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a></li>
-          <li>VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a></li>
+          📧 Email: <a href="mailto:burnsun@metal.ru"> bursun.group.of@gmail.com</a></li>
+                    <li>📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a></li>
+                    <li>🔗 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a></li>
       </ul>
       <p>Менеджмент: +7 (999) 123-45-67</p>
   `
@@ -480,6 +505,7 @@ function getPageName(pageKey) {
       band: 'Участники',
       music: 'Музыка',
       merch: 'Мерч',
+      support: 'Поддержать',
       contacts: 'Контакты'
   };
   return names[pageKey] || pageKey;
