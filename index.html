@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BurSun | Burning Sun</title>
-  <!-- иконка во вкладке -->
-  <link rel="icon" type="image/jpeg" href="BS.webp.">
+  <!-- иконка во вкладке (исправлено) -->
+  <link rel="icon" type="image/webp" href="BS.webp">
+  <!-- если файл на самом деле JPG, замени на:
+  <link rel="icon" type="image/jpeg" href="BS.jpg">
+  -->
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -279,7 +282,7 @@
         margin: 4px 0;
     }
 
-    /* ===== ВОТ ЭТОТ СТИЛЬ ДЛЯ ФУТЕРА ===== */
+    /* ===== Стиль для футера ===== */
     footer {
         text-align: center;
         color: #555;
@@ -288,7 +291,6 @@
         padding-top: 20px;
         border-top: 1px solid #b22222;
     }
-    /* =================================== */
   </style>
 </head>
 <body>
@@ -396,9 +398,9 @@
       <h2 style="color:#b22222;">Контакты</h2>
       <p>По вопросам выступлений, интервью и сотрудничества:</p>
       <ul class="contacts-list">
-          📧 Email: <a href="mailto:burnsun@metal.ru"> bursun.group.of@gmail.com</a></li>
-                    <li>📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a></li>
-                    <li>🔗 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a></li>
+          <li>📧 Email: <a href="mailto:burnsun@metal.ru">bursun.group.of@gmail.com</a></li>
+          <li>📱 Telegram: <a href="https://t.me/bursungroup" target="_blank">t.me/bursungroup</a></li>
+          <li>🔗 VK: <a href="https://vk.com/bursunofficial" target="_blank">vk.com/bursunofficial</a></li>
       </ul>
       <p>Менеджмент: +7 (999) 123-45-67</p>
   `
@@ -577,6 +579,12 @@ if (clearBtn) {
       searchInput.focus();
   });
 }
+
+showPage('home');
+</script>
+</body>
+</html>
+
 
 showPage('home');
 </script>
